@@ -33,7 +33,11 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/ori', 'Home::index');
 $routes->get('/produk', 'ProdukController::index');
+$routes->get('/produk/create', 'ProdukController::create');
+$routes->post('/produk/save', 'ProdukController::save');
 $routes->get('/', 'DasboardController::index');
+
+
 
 /*
  * --------------------------------------------------------------------

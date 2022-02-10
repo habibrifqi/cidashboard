@@ -520,6 +520,67 @@ span.cssNew {
     color: var(--blue);
 }
 
+.details.produk {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+    /* margin-top: 10px; */
+    /* background-color: #1795ce; */
+}
+
+.details.produk .recentOrders {
+    position: relative;
+    display: grid;
+    min-height: 0;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+
+.btn.btn-edit {
+    position: relative;
+    padding: 5px 10px;
+    background: #cea433;
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+    display: block;
+    text-align: center;
+    /* width: 100px; */
+    margin: 2px 0;
+}
+
+.btn.btn-hapus {
+    position: relative;
+    padding: 5px 10px;
+    background: #ec0000;
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+    display: block;
+    text-align: center;
+    /* width: 100px; */
+    margin: 2px 0;
+}
+
+.btn.btnTambah {
+    position: relative;
+    padding: 10px 10px;
+    background: #4a00f7;
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+    margin-left: 20px;
+}
+
+td.table-action {
+    width: 89px;
+}
+
 /* responsive */
 
 @media(max-width:991px) {
