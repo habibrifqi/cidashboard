@@ -22,19 +22,18 @@
 
     <div class="infori">
         <!-- <h4>Produk</h4>/<h4>home</h4> -->
-        <p class="infori-awal">Tambah Produk</p>
+        <p class="infori-awal">Ubah Produk</p>
         <!-- <h3>Produk</h3> -->
-        <p class="infori-akhir"><a href="/produk">Produk</a> / Tambah Produk</p>
+        <p class="infori-akhir"><a href="/produk">Produk</a> / Ubah Produk</p>
     </div>
 
-    <a href="/produk/create" class="btn btnTambah">Tambah Produk</a>
-
+    <a href="/produk/create" class="btn btnTambah">ubah Produk</a>
 
     <div style="padding: 20px;">
-    <form action="/produk/save" method="post">
+    <form action="/produk/update/<?= $produk['id']; ?>" method="post">
         <?= csrf_field(); ?>
         <label for="nama_produk">nama produk:</label><br>
-        <input type="text" id="fname" name="nama_produk" autofocus required value="<?= old('nama_produk'); ?>">
+        <input type="text" id="fname" name="nama_produk" autofocus required value="<?=(old('nama_produk')) ? old('nama_produk') : $produk['nama_produk'];   ?>">
         <br>
         <?php if($validation->hasError('nama_produk')) :  ?>
             <div class="">
@@ -47,10 +46,10 @@
         
 
         <label for="harga">harga:</label><br>
-        <input type="text" id="harga" name="harga"  required value="<?= old('harga'); ?>"><br>
+        <input type="text" id="harga" name="harga"  required value="<?=(old('harga')) ? old('harga') : $produk['harga'];   ?>"><br>
 
         <label for="merek">merek:</label><br>
-        <input type="text" id="merek" name="merek" required  value="<?= old('merek'); ?>"><br><br>
+        <input type="text" id="merek" name="merek" required  value="<?=(old('merek')) ? old('merek') : $produk['merek'];   ?>"><br><br>
 
         <button type="submit">Tambah Produk</button>
     </form> 

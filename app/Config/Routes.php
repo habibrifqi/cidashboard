@@ -35,6 +35,9 @@ $routes->get('/ori', 'Home::index');
 $routes->get('/produk', 'ProdukController::index');
 $routes->get('/produk/create', 'ProdukController::create');
 $routes->post('/produk/save', 'ProdukController::save');
+$routes->get('/produk/edit/(:num)', 'ProdukController::edit/$1');
+$routes->post('/produk/update/(:num)', 'ProdukController::update/$1');
+$routes->delete('/produk/delete/(:num)', 'ProdukController::delete/$1');
 $routes->get('/', 'DasboardController::index');
 
 

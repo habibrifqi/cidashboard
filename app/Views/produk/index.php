@@ -59,14 +59,20 @@
                         <td><?= $produk['nama_produk']; ?></td>
                         <td><?= $produk['id_kategori']; ?></td>
                         <td><?= $produk['harga']; ?></td>
-                        <td><img src="/img/tes/moslemstyle.png" alt="" width="100px"><?= $produk['gambar1']; ?></td>
-                        <td><img src="/img/tes/moslemstyle.png" alt="" width="100px"><?= $produk['gambar1']; ?></td>
-                        <td><img src="/img/tes/moslemstyle.png" alt="" width="100px"><?= $produk['gambar1']; ?></td>
-                        <td><img src="/img/tes/cc.png" alt="" width="100px"><?= $produk['gambar1']; ?></td>
+                        <td class="ff"><img src="/img/tes/moslemstyle.png" alt="" width="30px"><?= $produk['gambar1']; ?></td>
+                        <td><img src="/img/tes/moslemstyle.png" alt="" width="20px"><?= $produk['gambar1']; ?></td>
+                        <td><img src="/img/tes/moslemstyle.png" alt="" width="20px"><?= $produk['gambar1']; ?></td>
+                        <td><img src="/img/tes/cc.png" alt="" width="20px"><?= $produk['gambar1']; ?></td>
                        
                         <td class="table-action">
-                            <a href="" class="btn btn-edit">edit</a>
-                            <a href="" class="btn btn-hapus">hapus</a>
+                            <?= csrf_field(); ?>
+                            <a href="/produk/edit/<?= $produk['id']; ?>" class="btn btn-edit">edit</a>
+                            <form action="/produk/<?= $produk['id']; ?>" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            
+                            <button style="width: 100%; border:none; cursor:pointer;" type="submit"  class="btn btn-hapus" onclick="return confirm('yakin mau di hapus sayang?')">hapus</button>
+                            </form>
+                            <!-- <a href="">hapus</a> -->
                         </td>
                     </tr>
                     <?php endforeach ?>
