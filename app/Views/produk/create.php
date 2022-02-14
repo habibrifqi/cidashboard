@@ -31,29 +31,105 @@
 
 
     <div style="padding: 20px;">
-    <form action="/produk/save" method="post">
-        <?= csrf_field(); ?>
-        <label for="nama_produk">nama produk:</label><br>
-        <input type="text" id="fname" name="nama_produk" autofocus required value="<?= old('nama_produk'); ?>">
-        <br>
-        <?php if($validation->hasError('nama_produk')) :  ?>
+        <form action="/produk/save" method="post">
+            <?= csrf_field(); ?>
+            <label for="nama_produk">nama produk:</label><br>
+            <input class="form-produk <?= ($validation->hasError('nama_produk'))? 'invalid' : '' ?>" type="text"
+                id="fname" name="nama_produk" autofocus required value="<?= old('nama_produk'); ?>" autocomplete="off">
+            <br>
+            <?php if($validation->hasError('nama_produk')) :  ?>
             <div class="">
-                <span style="color: rebeccapurple;"><?= $validation->getError('nama_produk'); ?></span>
+                <span style="color: red;"><?= $validation->getError('nama_produk'); ?></span>
             </div>
             <br>
-        <?php endif?>
+            <?php endif?>
 
-        
-        
 
-        <label for="harga">harga:</label><br>
-        <input type="text" id="harga" name="harga"  required value="<?= old('harga'); ?>"><br>
 
-        <label for="merek">merek:</label><br>
-        <input type="text" id="merek" name="merek" required  value="<?= old('merek'); ?>"><br><br>
 
-        <button type="submit">Tambah Produk</button>
-    </form> 
+            <label for="harga">harga:</label><br>
+            <input class="form-produk" type="text" id="harga" name="harga" required value="<?= old('harga'); ?>"
+                autocomplete="off"><br>
+
+            <label for="merek">merek:</label><br>
+            <input class="form-produk" type="text" id="merek" name="merek" required value="<?= old('merek'); ?>"
+                autocomplete="off"><br>
+
+            <!-- <div class="laber-gambar">
+                <div class="laber-gmbr">
+                      <label for="merek">gambar 1 :</label>
+                </div>
+                <div class="laber-gmbr">
+                      <label for="merek">gambar 1 :</label>
+                </div>
+            </div> -->
+            <br>
+            <div class="form-input-gambar">
+                <div class="block-input-gambar">
+                    <div class="laber-gmbr">
+                        <label for="merek">gambar 1 :</label>
+                    </div>
+
+                    <div class="input-gambar">
+                        <input class="form-produk" type="file" name="gambar1" id="gambar1">
+                    </div>
+
+                    <div class="priview-gambar">
+                        <!-- <img src="/img/aa.png" alt=""> -->
+                    </div>
+                </div>
+                <div class="block-input-gambar">
+                    <div class="laber-gmbr">
+                        <label for="merek">gambar 2 :</label>
+                    </div>
+
+                    <div class="input-gambar">
+                        <input class="form-produk" type="file" name="gambar1" id="gambar1">
+                    </div>
+
+                    <div class="priview-gambar">
+                        <!-- <img src="/img/ss.png" alt=""> -->
+                    </div>
+                </div>
+            </div>
+            <br>
+
+
+            
+
+            <div class="form-input-gambar">
+                <div class="block-input-gambar">
+                    <div class="laber-gmbr">
+                        <label for="merek">gambar 1 :</label>
+                    </div>
+
+                    <div class="input-gambar">
+                        <input class="form-produk" type="file" name="gambar1" id="gambar1">
+                    </div>
+
+                    <div class="priview-gambar">
+                        <!-- <img src="/img/aa.png" alt=""> -->
+                    </div>
+                </div>
+                <div class="block-input-gambar">
+                    <div class="laber-gmbr">
+                        <label for="merek">gambar 2 :</label>
+                    </div>
+
+                    <div class="input-gambar">
+                        <input class="form-produk" type="file" name="gambar1" id="gambar1">
+                    </div>
+
+                    <div class="priview-gambar">
+                        <!-- <img src="/img/moslemstyle.png" alt=""> -->
+                    </div>
+                </div>
+            </div>
+            <br>
+
+
+            <button type="submit">Tambah Produk</button>
+        </form>
     </div>
 
 

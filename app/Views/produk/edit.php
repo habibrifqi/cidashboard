@@ -27,32 +27,50 @@
         <p class="infori-akhir"><a href="/produk">Produk</a> / Ubah Produk</p>
     </div>
 
-    <a href="/produk/create" class="btn btnTambah">ubah Produk</a>
+    <!-- <a href="/produk/create" class="btn btnTambah">ubah Produk</a> -->
 
     <div style="padding: 20px;">
-    <form action="/produk/update/<?= $produk['id']; ?>" method="post">
-        <?= csrf_field(); ?>
-        <label for="nama_produk">nama produk:</label><br>
-        <input type="text" id="fname" name="nama_produk" autofocus required value="<?=(old('nama_produk')) ? old('nama_produk') : $produk['nama_produk'];   ?>">
-        <br>
-        <?php if($validation->hasError('nama_produk')) :  ?>
+        <form action="/produk/update/<?= $produk['id']; ?>" method="post">
+            <?= csrf_field(); ?>
+            <label for="nama_produk">nama produk:</label><br>
+            <input class="form-produk <?= ($validation->hasError('nama_produk'))? 'invalid' : '' ?>" type="text"
+                id="fname" name="nama_produk" autofocus required
+                value="<?=(old('nama_produk')) ? old('nama_produk') : $produk['nama_produk'];   ?>">
+            <br>
+            <?php if($validation->hasError('nama_produk')) :  ?>
             <div class="">
-                <span style="color: rebeccapurple;"><?= $validation->getError('nama_produk'); ?></span>
+                <span style="color: red;"><?= $validation->getError('nama_produk'); ?></span>
             </div>
             <br>
-        <?php endif?>
+            <?php endif?>
 
-        
-        
 
-        <label for="harga">harga:</label><br>
-        <input type="text" id="harga" name="harga"  required value="<?=(old('harga')) ? old('harga') : $produk['harga'];   ?>"><br>
 
-        <label for="merek">merek:</label><br>
-        <input type="text" id="merek" name="merek" required  value="<?=(old('merek')) ? old('merek') : $produk['merek'];   ?>"><br><br>
 
-        <button type="submit">Tambah Produk</button>
-    </form> 
+            <label for="harga">harga:</label><br>
+            <input class="form-produk" type="text" id="harga" name="harga" required
+                value="<?=(old('harga')) ? old('harga') : $produk['harga'];   ?>"><br>
+
+            <label for="merek">merek:</label><br>
+                <input class="form-produk" type="text" id="merek" name="merek" required
+                    value="<?=(old('merek')) ? old('merek') : $produk['merek'];   ?>">
+            <br>
+
+            <label for="merek">gambar 1 :</label>
+            <br>
+            <div class="form-input-gambar">
+               <div class="input-gambar">
+               <input class="form-produk" type="file" name="gambar1" id="gambar1">
+               </div>
+                
+                <div class="priview-gambar">
+                    <img src="/img/c1.jpg" alt="">
+                </div>
+            </div>
+
+
+            <button class="btn btnSubmit" type="submit">Tambah Produk</button>
+        </form>
     </div>
 
 

@@ -577,8 +577,83 @@ span.cssNew {
     margin-left: 20px;
 }
 
+.btn.btnSubmit {
+    position: relative;
+    padding: 10px 10px;
+    background: #4a00f7;
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+    border: none;
+}
+
 td.table-action {
     width: 89px;
+}
+
+input.form-produk,
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid var(--blue);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input.form-produk:focus
+
+/* textarea:focus, */
+/* select:focus  */
+    {
+    outline: #86e489 solid 1px;
+}
+
+input.form-produk.invalid:focus {
+    /* outline: #e48686 solid 1px; */
+    outline: none;
+}
+
+input.form-produk.invalid
+
+/* textarea:focus, */
+/* select:focus  */
+    {
+    border: 1px solid #d82a13;
+}
+
+.form-input-gambar {
+    display: flex;
+}
+
+.input-gambar {
+    width: 55%;
+}
+
+.block-input-gambar {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+
+.ff {
+    border: 1px solid #121212;
+}
+
+.laber-gmbr {
+    width: 100%;
+}
+
+.priview-gambar img {
+    height: 100px;
+    object-fit: cover;
+}
+
+.priview-gambar {
+    margin: 0 20px;
 }
 
 /* responsive */
