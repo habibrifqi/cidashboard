@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css">
-    
+
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"> -->
 </head>
 
@@ -15,9 +15,9 @@
     <div class="container">
         <?= $this->include('layout/navbar'); ?>
         <!-- main -->
-       
+
         <?= $this->renderSection('content') ?>
-        
+
 
         <!-- <a href="" class="btn"></a> -->
     </div>
@@ -75,6 +75,26 @@
                 nt.classList.remove('dark-theme');
             }
         });
+
+
+
+        // priview
+
+        function priviewimg1() {
+            const gambar1 = document.querySelector('#gambar1');
+            const gambar1Label = document.querySelector('.vbn');
+            const imgpriview1 = document.querySelector('.img-priview');
+
+            // const gambar1save = 'no file cousen';
+            // const gambar1save = document.querySelector('#gambar1save');
+
+            const filegambar1 = new FileReader();
+            filegambar1.readAsDataURL(gambar1.files[0]);
+
+            filegambar1.onload = function (e) {
+                imgpriview1.src = e.target.result;
+            }
+        }
     </script>
 </body>
 

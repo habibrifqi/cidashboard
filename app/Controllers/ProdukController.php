@@ -42,19 +42,37 @@ class ProdukController extends BaseController
                     'required' => '{field} harus di isi sayang',
                     'is_unique' => 'nama produk sudah terdaftar'
                     ]
+                ],
+            'gambar1' => [
+                'rules' =>'uploaded[gambar1]|max_size[gambar1,5000]|is_image[gambar1]|mime_in[gambar1,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                        'uploaded' => 'wajib upload gambar sayang',
+                        'max_size' => 'ukuran gambar terlalu besar',
+                        'is_image' => 'bukan gambar sayang',
+                        'mime_in' => 'bukan gambar sayang'
+                        
+                    ]
                 ]
             ])) {
-            $validation = \Config\Services::validation();
+            // $validation = \Config\Services::validation();
 
-            return redirect()->to('produk/create')->withInput()->with('validation', $validation);
+         
+            // return redirect()->to('produk/create')->withInput()->with('validation', $validation);
+            return redirect()->to('produk/create')->withInput();
         }
-
+        // dd( );
+        //deklarasi file gambar1
+        $filegambar1 = $this->request->getFile('gambar1');
+        //generat nama gambar rendom
+        $namagambar1 = $filegambar1->getRandomName();
+        $filegambar1->move('img/produk' , $namagambar1);
 
         $produk = new Produk();
         $produk->save([
             'nama_produk' => $this->request->getVar('nama_produk'),
             'harga' => $this->request->getVar('harga'),
-            'merek' => $this->request->getVar('merek')
+            'merek' => $this->request->getVar('merek'),
+            'gambar1' => $namagambar1
         ]);
         
         return redirect()->to('/produk');
@@ -63,10 +81,17 @@ class ProdukController extends BaseController
     public function delete($id)
     {
         $produkmodel = new Produk();
-        // $produk = $produkmodel->find(['id' , $id]);
-        $produk = $produkmodel->delete($id);
+        // $produk = $produkmodel->where(['id' , $id]);
 
-        // dd($produk);
+        //tangkap data perdasarkan id
+        $produk = $produkmodel->find($id);
+
+        unlink('img/produk/'.$produk['gambar1']);
+
+
+        $produkmodel->delete($id);
+
+        //  dd($produk);
         return redirect()->to('/produk');
     }
 
@@ -104,11 +129,34 @@ class ProdukController extends BaseController
                     'required' => '{field} harus di isi sayang',
                     'is_unique' => 'nama produk sudah terdaftar'
                     ]
+                ],
+            'gambar1' => [
+                'rules' =>'max_size[gambar1,5000]|is_image[gambar1]|mime_in[gambar1,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'wajib upload gambar sayang',
+                    'max_size' => 'ukuran gambar terlalu besar',
+                    'is_image' => 'bukan gambar sayang',
+                    'mime_in' => 'bukan gambar sayang'  
+                    ]
                 ]
             ])) {
-            $validation = \Config\Services::validation();
+            // $validation = \Config\Services::validation();
 
-            return redirect()->to('produk/edit/'.$id)->withInput()->with('validation', $validation);
+            // return redirect()->to('produk/edit/'.$id)->withInput()->with('validation', $validation);
+            return redirect()->to('produk/edit/'.$id)->withInput();
+        }
+
+        $filegambar1 = $this->request->getFile('gambar1');
+        // cek apakah gambar tetap gambar lama
+        if($filegambar1->getError() == 4){
+            $namagambar1 = $this->request->getVar('gambar1save');
+        }else{
+            // generit nama file rendem
+            $namagambar1 = $filegambar1->getRandomName();
+            // upload gambar
+            $filegambar1->move('img/produk/', $namagambar1);
+
+            unlink('img/produk/'.$this->request->getVar('gambar1save'));
         }
 
         $produk = new Produk();
@@ -116,7 +164,8 @@ class ProdukController extends BaseController
             'id' => $id,
             'nama_produk' => $this->request->getVar('nama_produk'),
             'harga' => $this->request->getVar('harga'),
-            'merek' => $this->request->getVar('merek')
+            'merek' => $this->request->getVar('merek'),
+            'gambar1' => $namagambar1
         ]);
         
         return redirect()->to('/produk');

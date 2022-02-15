@@ -30,7 +30,7 @@
     <!-- <a href="/produk/create" class="btn btnTambah">ubah Produk</a> -->
 
     <div style="padding: 20px;">
-        <form action="/produk/update/<?= $produk['id']; ?>" method="post">
+        <form action="/produk/update/<?= $produk['id']; ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
             <label for="nama_produk">nama produk:</label><br>
             <input class="form-produk <?= ($validation->hasError('nama_produk'))? 'invalid' : '' ?>" type="text"
@@ -44,9 +44,7 @@
             <br>
             <?php endif?>
 
-
-
-
+    
             <label for="harga">harga:</label><br>
             <input class="form-produk" type="text" id="harga" name="harga" required
                 value="<?=(old('harga')) ? old('harga') : $produk['harga'];   ?>"><br>
@@ -56,17 +54,71 @@
                     value="<?=(old('merek')) ? old('merek') : $produk['merek'];   ?>">
             <br>
 
-            <label for="merek">gambar 1 :</label>
-            <br>
+            <input class="form-produk" type="text" id="gambar1save" name="gambar1save" required
+                    value="<?= $produk['gambar1'];   ?>">
+
             <div class="form-input-gambar">
-               <div class="input-gambar">
-               <input class="form-produk" type="file" name="gambar1" id="gambar1">
-               </div>
-                
-                <div class="priview-gambar">
-                    <img src="/img/c1.jpg" alt="">
+                <div class="block-input-gambar">
+                    <div class="laber-gmbr">
+                        <label for="gambar1" class="vbn">gambar 1 :</label>
+                    </div>
+
+                    <div class="input-gambar">
+                        <input class="form-produk <?= ($validation->hasError('gambar1'))? 'invalid' : '' ?>" type="file" name="gambar1" id="gambar1" onchange="priviewimg1()" title="sfad">
+                    </div>
+
+                    <div class="priview-gambar">
+                        <img src="/img/produk/<?= $produk['gambar1'] ?>" alt="" class="img-priview">
+                    </div>
+                    <div class="" width=100%>
+                        <span style="color: red;"><?= $validation->getError('gambar1'); ?></span>
+                    </div>
+                </div>
+                <div class="block-input-gambar">
+                    <div class="laber-gmbr">
+                        <label for="gambar2">gambar 2 :</label>
+                    </div>
+
+                    <div class="input-gambar">
+                        <input class="form-produk" type="file" name="gambar2" id="gambar2">
+                    </div>
+
+                    <div class="priview-gambar">
+                        <!-- <img src="/img/ss.png" alt=""> -->
+                    </div>
                 </div>
             </div>
+            <br>
+
+            <div class="form-input-gambar">
+                <div class="block-input-gambar">
+                    <div class="laber-gmbr">
+                        <label for="gambar3">gambar 3 :</label>
+                    </div>
+
+                    <div class="input-gambar">
+                        <input class="form-produk" type="file" name="gambar3" id="gambar3" title="Choose a video please">
+                    </div>
+
+                    <div class="priview-gambar">
+                        <!-- <img src="/img/aa.png" alt=""> -->
+                    </div>
+                </div>
+                <div class="block-input-gambar">
+                    <div class="laber-gmbr">
+                        <label for="gambar4">gambar 4 :</label>
+                    </div>
+
+                    <div class="input-gambar">
+                        <input class="form-produk" type="file" name="gambar4" id="gambar4">
+                    </div>
+
+                    <div class="priview-gambar">
+                        <!-- <img src="/img/moslemstyle.png" alt=""> -->
+                    </div>
+                </div>
+            </div>
+            <br>
 
 
             <button class="btn btnSubmit" type="submit">Tambah Produk</button>

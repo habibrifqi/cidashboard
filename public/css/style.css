@@ -639,9 +639,7 @@ input.form-produk.invalid
 
 }
 
-.ff {
-    border: 1px solid #121212;
-}
+
 
 .laber-gmbr {
     width: 100%;
@@ -654,6 +652,7 @@ input.form-produk.invalid
 
 .priview-gambar {
     margin: 0 20px;
+    min-width: 30%;
 }
 
 /* responsive */

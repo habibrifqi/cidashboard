@@ -40,10 +40,11 @@
             <table>
                 <thead>
                     <tr>
-                        <td>No</td>
+                        <td width= 2%>No</td>
                         <td>nama produk</td>
                         <td>kategori</td>
                         <td>harga</td>
+                        <td>merek</td>
                         <td>gambar 1</td>
                         <td>gambar 2</td>
                         <td>gambar 3</td>
@@ -55,19 +56,20 @@
                 <tbody>
                     <?php foreach ($produk as $key => $produk) : ?>
                     <tr>
-                        <td><?= $key+1 ?></td>
+                        <td width= 2%><?= $key+1 ?></td>
                         <td><?= $produk['nama_produk']; ?></td>
                         <td><?= $produk['id_kategori']; ?></td>
                         <td><?= $produk['harga']; ?></td>
-                        <td class="ff"><img src="/img/tes/moslemstyle.png" alt="" width="30px"><?= $produk['gambar1']; ?></td>
-                        <td><img src="/img/tes/moslemstyle.png" alt="" width="20px"><?= $produk['gambar1']; ?></td>
-                        <td><img src="/img/tes/moslemstyle.png" alt="" width="20px"><?= $produk['gambar1']; ?></td>
-                        <td><img src="/img/tes/cc.png" alt="" width="20px"><?= $produk['gambar1']; ?></td>
+                        <td><?= $produk['merek']; ?></td>
+                        <td class="ff"><img src="/img/produk/<?= $produk['gambar1']; ?>" alt="" width="30px"></td>
+                        <td><img src="/img/tes/moslemstyle.png" alt="" width="20px"></td>
+                        <td><img src="/img/tes/moslemstyle.png" alt="" width="20px"></td>
+                        <td><img src="/img/tes/cc.png" alt="" width="20px"></td>
                        
                         <td class="table-action">
                             <?= csrf_field(); ?>
                             <a href="/produk/edit/<?= $produk['id']; ?>" class="btn btn-edit">edit</a>
-                            <form action="/produk/<?= $produk['id']; ?>" method="post">
+                            <form action="/produk/delete/<?= $produk['id']; ?>" method="post">
                             <input type="hidden" name="_method" value="DELETE">
                             
                             <button style="width: 100%; border:none; cursor:pointer;" type="submit"  class="btn btn-hapus" onclick="return confirm('yakin mau di hapus sayang?')">hapus</button>

@@ -31,7 +31,7 @@
 
 
     <div style="padding: 20px;">
-        <form action="/produk/save" method="post">
+        <form action="/produk/save" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
             <label for="nama_produk">nama produk:</label><br>
             <input class="form-produk <?= ($validation->hasError('nama_produk'))? 'invalid' : '' ?>" type="text"
@@ -55,6 +55,7 @@
             <input class="form-produk" type="text" id="merek" name="merek" required value="<?= old('merek'); ?>"
                 autocomplete="off"><br>
 
+
             <!-- <div class="laber-gambar">
                 <div class="laber-gmbr">
                       <label for="merek">gambar 1 :</label>
@@ -67,24 +68,27 @@
             <div class="form-input-gambar">
                 <div class="block-input-gambar">
                     <div class="laber-gmbr">
-                        <label for="merek">gambar 1 :</label>
+                        <label for="gambar1" class="vbn">gambar 1 :</label>
                     </div>
 
                     <div class="input-gambar">
-                        <input class="form-produk" type="file" name="gambar1" id="gambar1">
+                        <input class="form-produk <?= ($validation->hasError('gambar1'))? 'invalid' : '' ?>" type="file" name="gambar1" id="gambar1" onchange="priviewimg1()">
                     </div>
 
                     <div class="priview-gambar">
-                        <!-- <img src="/img/aa.png" alt=""> -->
+                        <img src="" alt="" class="img-priview">
+                    </div>
+                    <div class="" width=100%>
+                        <span style="color: red;"><?= $validation->getError('gambar1'); ?></span>
                     </div>
                 </div>
                 <div class="block-input-gambar">
                     <div class="laber-gmbr">
-                        <label for="merek">gambar 2 :</label>
+                        <label for="gambar2">gambar 2 :</label>
                     </div>
 
                     <div class="input-gambar">
-                        <input class="form-produk" type="file" name="gambar1" id="gambar1">
+                        <input class="form-produk" type="file" name="gambar2" id="gambar2">
                     </div>
 
                     <div class="priview-gambar">
@@ -94,17 +98,14 @@
             </div>
             <br>
 
-
-            
-
             <div class="form-input-gambar">
                 <div class="block-input-gambar">
                     <div class="laber-gmbr">
-                        <label for="merek">gambar 1 :</label>
+                        <label for="gambar3">gambar 3 :</label>
                     </div>
 
                     <div class="input-gambar">
-                        <input class="form-produk" type="file" name="gambar1" id="gambar1">
+                        <input class="form-produk" type="file" name="gambar3" id="gambar3">
                     </div>
 
                     <div class="priview-gambar">
@@ -113,11 +114,11 @@
                 </div>
                 <div class="block-input-gambar">
                     <div class="laber-gmbr">
-                        <label for="merek">gambar 2 :</label>
+                        <label for="gambar4">gambar 4 :</label>
                     </div>
 
                     <div class="input-gambar">
-                        <input class="form-produk" type="file" name="gambar1" id="gambar1">
+                        <input class="form-produk" type="file" name="gambar4" id="gambar4">
                     </div>
 
                     <div class="priview-gambar">
