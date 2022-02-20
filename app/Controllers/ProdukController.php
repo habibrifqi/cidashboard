@@ -12,11 +12,26 @@ class ProdukController extends BaseController
     public function index()
     {       
         $produkmodel = new Produk();
-        $produk = $produkmodel->findAll();
+        // $produk = $produkmodel->findAll();
+        
+
+        $curentPage = $this->request->getVar('page_produk') ?  $this->request->getVar('page_produk') : 1;
+
+        $keyowrd = $this->request->getVar('keyword');
+
+        if($keyowrd){
+
+            $produkkey = $produkmodel->search($keyowrd)->paginate(5,'produk');
+        }else{
+            $produkkey = $produkmodel->paginate(5,'produk');
+        }
+        $produk = $produkkey;
         
         $data = [
             'active' => 'produk',
-            'produk' => $produk
+            'produk' => $produk,
+            'pager' => $produkmodel->pager,
+            'curentPage' => $curentPage
         ];
         return view('produk/index', $data);
     }

@@ -12,4 +12,8 @@ class Produk extends Model
     ];
     protected $useTimestamps = true;
     
+    public function search($keyowrd)
+    {
+        return $this->table('produk')->like('nama_produk',$keyowrd);
+    }
 }

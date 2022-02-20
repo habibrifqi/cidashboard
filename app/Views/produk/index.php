@@ -8,10 +8,13 @@
         </div>
         <!-- search -->
         <div class="search">
+            <form action="" method="get">
             <label>
-                <input type="text" placeholder="Search">
+                <input type="text" placeholder="Search" name="keyword" id="keyword">
                 <ion-icon name="search-outline"></ion-icon>
             </label>
+            <button type="submit" id="btnKeyword" style="display: none;"></button>
+            </form>
         </div>
         <!-- user img -->
         <div class="user">
@@ -56,7 +59,7 @@
                 <tbody>
                     <?php foreach ($produk as $key => $produk) : ?>
                     <tr>
-                        <td width= 2%><?= $key+1 ?></td>
+                        <td width= 2%><?= $key+1+(5*($curentPage -1)) ?></td>
                         <td><?= $produk['nama_produk']; ?></td>
                         <td><?= $produk['id_kategori']; ?></td>
                         <td><?= $produk['harga']; ?></td>
@@ -83,6 +86,9 @@
             </table>
         </div>
 
+    </div>
+    <div class="cv" style="display: inline;">
+    <?= $pager->links('produk','produk_pagination') ?>
     </div>
 
 
