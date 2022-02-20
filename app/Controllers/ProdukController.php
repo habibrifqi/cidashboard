@@ -163,9 +163,14 @@ class ProdukController extends BaseController
 
         $filegambar1 = $this->request->getFile('gambar1');
         // cek apakah gambar tetap gambar lama
-        if($filegambar1->getError() == 4){
+        if($filegambar1->getError() == 4 ){
             $namagambar1 = $this->request->getVar('gambar1save');
-        }else{
+        }elseif(empty($this->request->getVar('gambar1save'))){
+            $namagambar1 = $filegambar1->getRandomName();
+            // upload gambar
+            $filegambar1->move('img/produk/', $namagambar1);
+        }
+        else{
             // generit nama file rendem
             $namagambar1 = $filegambar1->getRandomName();
             // upload gambar

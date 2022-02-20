@@ -54,7 +54,7 @@
                     value="<?=(old('merek')) ? old('merek') : $produk['merek'];   ?>">
             <br>
 
-            <input class="form-produk" type="text" id="gambar1save" name="gambar1save" required
+            <input class="form-produk" type="text" id="gambar1save" name="gambar1save" 
                     value="<?= $produk['gambar1'];   ?>">
 
             <div class="form-input-gambar">
@@ -121,7 +121,7 @@
             <br>
 
 
-            <button class="btn btnSubmit" type="submit">Tambah Produk</button>
+            <button class="btn btnCreate" type="submit">Tambah Produk</button>
         </form>
     </div>
 

@@ -28,10 +28,17 @@ ul.pagination li a {
     font-size: 22px;
 }
 
+
+
+nav.Page-navigation {
+    float: right;
+    padding-right: 20px;
+}
+
 ul.pagination li a.active {
-    background-color: #4CAF50;
+    background-color: #146356;
     color: white;
-    border: 1px solid #4CAF50;
+    border: 1px solid #146356;
 }
 
 ul.pagination li a:hover:not(.active) {background-color: #ddd;}
@@ -60,12 +67,17 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
         <?php if ($pager->hasPreviousPage()) : ?>
             <li>
                 <a href="<?= $pager->getFirst() ?>" aria-label="<?= lang('Pager.first') ?>">
-                    <span aria-hidden="true"><?= '<<'  ?><?= lang('Pager.first') ?></span>
+                    <span aria-hidden="true"><?= '<<'  ?>
+                    <?//= lang('Pager.first') ?>
+                </span>
                 </a>
             </li>
             <li>
                 <a href="<?= $pager->getPreviousPage() ?>" aria-label="<?= lang('Pager.previous') ?>">
-                    <span aria-hidden="true"><?= lang('Pager.previous') ?></span>
+                    <span aria-hidden="true">
+                    <?= '<'  ?>
+                        <?//= lang('Pager.previous') ?>
+                    </span>
                 </a>
             </li>
         <?php endif ?>
@@ -81,12 +93,18 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
         <?php if ($pager->hasNextPage()) : ?>
             <li>
                 <a href="<?= $pager->getNextPage() ?>" aria-label="<?= lang('Pager.next') ?>">
-                    <span aria-hidden="true"><?= lang('Pager.next') ?></span>
+                    <span aria-hidden="true">
+                        <?//= lang('Pager.next') ?>
+                        <?= '>'  ?>
+                    </span>
                 </a>
             </li>
             <li>
                 <a href="<?= $pager->getLast() ?>" aria-label="<?= lang('Pager.last') ?>">
-                    <span aria-hidden="true"><?= lang('Pager.last') ?></span>
+                    <span aria-hidden="true">
+                    <?= '>>'  ?>
+                        <?//= lang('Pager.last') ?>
+                    </span>
                 </a>
             </li>
         <?php endif ?>

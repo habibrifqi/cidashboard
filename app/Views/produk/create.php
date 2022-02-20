@@ -129,7 +129,7 @@
             <br>
 
 
-            <button type="submit">Tambah Produk</button>
+            <button type="submit" class="btn btnCreate">Tambah Produk</button>
         </form>
     </div>
 
