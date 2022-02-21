@@ -21,6 +21,9 @@
             <img src="img/img8.jpg" alt="">
         </div>
     </div>
+    <!-- <div class="modal">
+
+    </div> -->
 
 
     <div class="infori">
@@ -48,8 +51,8 @@
                         <td>kategori</td>
                         <td>harga</td>
                         <td>merek</td>
-                        <td>gambar 1</td>
-                        <td>gambar 2</td>
+                        <td style="text-align: center;">gambar 1</td>
+                        <td style="text-align: center;">gambar 2</td>
                         <td>gambar 3</td>
                         <td>gambar 4</td>
                         <td class="table-action">action</td>
@@ -60,14 +63,14 @@
                     <?php foreach ($produk as $key => $produk) : ?>
                     <tr>
                         <td width= 2%><?= $key+1+(5*($curentPage -1)) ?></td>
-                        <td><?= $produk['nama_produk']; ?></td>
+                        <td width= 150px><?= $produk['nama_produk']; ?></td>
                         <td><?= $produk['id_kategori']; ?></td>
                         <td><?= $produk['harga']; ?></td>
                         <td><?= $produk['merek']; ?></td>
-                        <td class="ff"><img src="/img/produk/<?= $produk['gambar1']; ?>" alt="" width="30px"></td>
-                        <td><img src="/img/tes/moslemstyle.png" alt="" width="20px"></td>
-                        <td><img src="/img/tes/moslemstyle.png" alt="" width="20px"></td>
-                        <td><img src="/img/tes/cc.png" alt="" width="20px"></td>
+                        <td class="ff gambar_item"><img src="/img/produk/<?= $produk['gambar1']; ?>" alt="" width="100%"></td>
+                        <td  style="text-align: center;" class="gambar_item"><img src="/img/tes/moslemstyle.png" alt="" width="20px"></td>
+                        <td class="gambar_item"><img src="/img/tes/moslemstyle.png" alt="" width="20px"></td>
+                        <td class="gambar_item"><img src="/img/tes/cc.png" alt="" width="20px"></td>
                        
                         <td class="table-action">
                             <?= csrf_field(); ?>

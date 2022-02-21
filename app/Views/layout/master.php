@@ -7,14 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"> -->
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="target">
+        <div class="">
+        </div>
         <?= $this->include('layout/navbar'); ?>
         <!-- main -->
+
 
         <?= $this->renderSection('content') ?>
 
@@ -26,7 +30,7 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         // menu toggle
         let toggle = document.querySelector('.toggle');
@@ -97,14 +101,78 @@
         }
 
         //enter summit keyword search
-        var input = document.getElementById("myInput");
+        const input = document.getElementById("myInput");
 
-        input.addEventListener("keyup", function(event) {
-            if (event.keyCode === 13) {
-            event.preventDefault();
-            document.getElementById("myBtn").click();
+        function searchklick() {
+            input.addEventListener("keyup", function (event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    document.getElementById("myBtn").click();
+                }
+            });
         }
+
+
+        // madal priview iamge
+
+
+        const images = document.querySelectorAll(".gambar_item img");
+        const gambar_item = document.querySelectorAll(".gambar_item");
+        let imgSrc;
+        // get images src onclick
+        images.forEach((img) => {
+            img.addEventListener("click", (e) => {
+                imgSrc = e.target.src;
+                console.log(imgModal);
+                imgModal(imgSrc);
+
+
+            });
         });
+
+        let imgModal = (src) => {
+            const modal = document.createElement("div");
+            modal.setAttribute("class", "modal");
+            //add the modal to the main section or the parent element
+            document.querySelector(".container").append(modal);
+            //adding image to modal
+            const newImage = document.createElement("img");
+            newImage.setAttribute("src", src);
+            modal.append(newImage)
+
+            const closeBtn = document.createElement("i");
+            closeBtn.setAttribute("class", "fas fa-times closeBtn");
+            //close function
+            closeBtn.onclick = () => {
+                modal.remove();
+            };
+
+            $(document).keyup(function (e) {
+                if (e.keyCode == 27) { // Esc
+                    modal.remove();
+                }
+            });
+
+            modal.append(newImage, closeBtn);
+
+
+
+            // $(newImage).click(function () {
+                
+            //         $(newImage).height(100%);
+                
+            // });
+
+            
+            // $(newImage).toggle(
+            //     function(){$(newImage).width(500);},
+            //     function(){$(newImage).width(100);
+            // });
+
+
+
+
+        };
     </script>
 </body>
 

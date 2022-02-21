@@ -12,9 +12,6 @@
     padding: 0;
     margin: 0;
 }
-*{
-    /* font-size: 10px; */
-}
 
 ul.pagination li {display: inline;}
 
